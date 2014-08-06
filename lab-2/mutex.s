@@ -12,11 +12,11 @@ lock_mutex:
 	
 	ldr r1, =locked
 	.L1:
-		ldrex r2, [r0]
+		ldrex r2, [r0]			// read lock value
 		cmp r2, #0
-			strexeq r2, r1, [r0]
+			strexeq r2, r1, [r0]	// try and claim the lock
 			cmpeq r2, #0
-			bne .L1
+			bne .L1			// branch if not equal
 
         @ END CODE INSERT
 	bx lr
