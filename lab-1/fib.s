@@ -24,7 +24,8 @@ fibonacci:
 	beq .L4
 
 	@ R0 = R4 - 1
-	add r0, r4, #4294967295
+	@add r0, r4, #4294967295
+	subs r0, r4, #1
 	@ Recursive call to fibonacci with R4 - 1 as parameter
 	bl fibonacci
 
