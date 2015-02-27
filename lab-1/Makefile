@@ -2,7 +2,7 @@ CC	= arm-linux-gnueabihf-gcc
 CFLAGS	= -O1 -Wall
 LDFLAGS = -fno-stack-protector
 
-objects	= fibseq.o fib.o
+objects	= fibseq.o fib2.o
 
 default: fibseq
 
@@ -11,7 +11,7 @@ default: fibseq
 fibseq: $(objects)
 	$(CC) $(LDFLAGS) -o $@ $^
 
-fib.o: fib.s
+fib2.o: fib2.s
 fibseq.o: fibseq.c
 
 %.o: %.c
