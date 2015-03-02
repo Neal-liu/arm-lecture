@@ -10,13 +10,14 @@
 lock_mutex:
         @ INSERT CODE BELOW
 	
-	ldr r1, =locked
-	.L1:
-		ldrex r2, [r0]			// read lock value
-		cmp r2, #0
-			strexeq r2, r1, [r0]	// try and claim the lock
-			cmpeq r2, #0
-			bne .L1			// branch if not equal
+	//ldr r1, =locked
+	mov r1, #1
+.Loop:
+	ldrex r2, [r0]			// read lock value
+	cmp r2, #0
+		strexeq r2, r1, [r0]	// try and claim the lock
+		cmpeq r2, #0
+		bne .Loop		// branch if not equal
 
         @ END CODE INSERT
 	bx lr
@@ -25,6 +26,7 @@ lock_mutex:
 
 	.global unlock_mutex
 	.type unlock_mutex, function
+
 unlock_mutex:
 	@ INSERT CODE BELOW
         
