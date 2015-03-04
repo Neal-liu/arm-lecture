@@ -1,15 +1,15 @@
-int add(int, int);
+int divide(int, int);
 
 int main()
 {
 	int a, b, c;
 	a=10;
 	b=12;
-	c=add(a,b);
+	c=divide(a,b);
 	return c;
 }
 
-int add(int a, int b)
+int divide(int a, int b)
 {
-	return a+b;
+	return (a/b);
 }
